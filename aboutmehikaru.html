@@ -1,0 +1,377 @@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>Alex Portfolio</title>  
+    <style>  
+        body {  
+            margin: 0;  
+            padding: 0;  
+            font-family: Arial, sans-serif;  
+            background-color: #000;  
+            color: #fff;  
+            scroll-behavior: smooth;  
+            position: relative;  
+        }  
+        nav {  
+            display: flex;  
+            justify-content: center;  
+            gap: 30px;  
+            padding: 20px;  
+            font-size: 18px;  
+            position: fixed;  
+            width: 100%;  
+            background: rgba(0,0,0,0.7);  
+            z-index: 10;  
+        }  
+        nav a {  
+            color: #fff;  
+            text-decoration: none;  
+            position: relative;  
+        }  
+        nav a::after {  
+            content: '';  
+            display: block;  
+            width: 0;  
+            height: 2px;  
+            background: #ff6b6b;  
+            transition: width .3s;  
+            position: absolute;  
+            bottom: -5px;  
+            left: 0;  
+        }  
+        nav a:hover::after, nav a.active::after {  
+            width: 100%;  
+        }  
+        .container {  
+            display: flex;  
+            justify-content: center;  
+            align-items: center;  
+            min-height: 100vh;  
+            padding: 0 20px;  
+            text-align: center;  
+            flex-direction: column;  
+        }  
+        .profile-img {  
+            width: 300px;  
+            height: 300px;  
+            border-radius: 50%;  
+            border: 5px solid #ff6b6b;  
+            background: url('blt.jpg') center/cover no-repeat;  
+            margin-bottom: 20px;  
+        }  
+        h1 {  
+            font-size: 48px;  
+        }  
+        h2 {  
+            font-size: 32px;  
+            color: #ff6b6b;  
+            height: 40px;  
+        }  
+        p {  
+            margin-top: 20px;  
+            color: #aaa;  
+            max-width: 600px;  
+        }  
+        .social {  
+            margin-top: 20px;  
+            display: flex;  
+            justify-content: center;  
+            gap: 15px;  
+        }  
+        .social a {  
+            color: #fff;  
+            font-size: 24px;  
+            text-decoration: none;  
+        }  
+        .btn {  
+            display: inline-block;  
+            margin-top: 20px;  
+            padding: 10px 20px;  
+            border: 2px solid #ff6b6b;  
+            color: #ff6b6b;  
+            border-radius: 30px;  
+            text-decoration: none;  
+            transition: background 0.3s, color 0.3s;  
+        }  
+        .btn:hover {  
+            background: #ff6b6b;  
+            color: #000;  
+        }  
+        .typing {  
+            border-right: 2px solid #ff6b6b;  
+            white-space: nowrap;  
+            overflow: hidden;  
+            display: inline-block;  
+            animation: blink 0.75s step-end infinite;  
+        }  
+        @keyframes blink {  
+            from, to { border-color: transparent; }  
+            50% { border-color: #ff6b6b; }  
+        }  
+        section {  
+            padding: 80px 20px;  
+            text-align: center;  
+        }  
+        .skill {  
+            margin: 20px auto;  
+            max-width: 600px;  
+            text-align: left;  
+        }  
+        .skill-name {  
+            font-size: 18px;  
+            margin-bottom: 5px;  
+        }  
+        .progress-bar {  
+            background: #333;  
+            border-radius: 30px;  
+            overflow: hidden;  
+            height: 30px;  
+            position: relative;  
+        }  
+        .progress-bar-fill {  
+            background: #ff6b6b;  
+            height: 100%;  
+            width: 0;  
+            border-radius: 30px;  
+            text-align: right;  
+            padding-right: 10px;  
+            box-sizing: border-box;  
+            color: #fff;  
+            font-size: 14px;  
+            line-height: 30px;  
+            transition: width 2s;  
+        }  
+        .experience-item {  
+            margin: 20px 0;  
+            color: #aaa;  
+            text-align: left;  
+        }  
+        .game-item {  
+            margin: 20px 0;  
+            color: #aaa;  
+            text-align: left;  
+        }  
+        canvas {  
+            position: fixed;  
+            top: 0;  
+            left: 0;  
+            z-index: -1;  
+        }  
+        /* Landscape fix */  
+        @media (orientation: landscape) and (max-height: 500px) {  
+            h1 {  
+                font-size: 32px;  
+            }  
+            h2 {  
+                font-size: 20px;  
+            }  
+            p {  
+                font-size: 14px;  
+            }  
+            .container {  
+                padding-top: 100px;  
+            }  
+        }  
+    </style>  
+    <!-- Add particles.js library -->  
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>  
+</head>  
+
+
+<body>  
+  
+<canvas id="particle-canvas"></canvas>  
+  
+<nav>  
+    <a href="#home" class="active">Home</a>  
+    <a href="#services">Services</a>  
+    <a href="#skills" id="skills-link">Skills</a>  
+    <a href="#experience">Experience</a>  
+    <a href="#games">Games</a>  
+</nav>  
+  
+<!-- HOME -->  
+<div class="container" id="home">  
+    <div class="profile-img"></div>  
+    <h1>Hi, I'm <span style="color: #ff6b6b;">Hikaru</span></h1>  
+    <h2 class="typing"></h2>  
+    <p>Except for hard work, there is suffering. Dislike in common, suffering holds misery, there is merit in denial, error, disability, questioning, no, worse here.</p>  
+    <div class="social">  
+        <a href="#"><i class="fab fa-linkedin"></i></a>  
+        <a href="#"><i class="fab fa-github"></i></a>  
+        <a href="#"><i class="fab fa-xing"></i></a>  
+        <a href="#"><i class="fab fa-instagram"></i></a>  
+    </div>  
+    <a href="https://wa.me/62881027334067" class="btn" target="_blank">Hire me</a>  
+</div>  
+  
+<!-- SERVICES -->  
+<section id="services">  
+    <h1 style="font-size: 48px; color: #ff6b6b; margin-bottom: 20px;">My Services</h1>  
+    <div style="max-width: 800px; margin: 0 auto; color: #aaa; font-size: 18px;">  
+        <p>I provide a range of services including:</p>  
+        <ul style="list-style: none; padding: 0;">  
+            <li style="margin: 10px 0;">• Web Development</li>  
+            <li style="margin: 10px 0;">• Mobile App Development</li>  
+            <li style="margin: 10px 0;">• Reverse Engineering & Debugging</li>  
+            <li style="margin: 10px 0;">• Cybersecurity Consulting</li>  
+        </ul>  
+    </div>  
+</section>  
+  
+<!-- SKILLS -->  
+<section id="skills">  
+    <h1 style="font-size: 48px; color: #ff6b6b; margin-bottom: 40px;">My Skills</h1>  
+    <div class="skill">  
+        <div class="skill-name">HTML</div>  
+        <div class="progress-bar"><div class="progress-bar-fill" data-percent="90">0%</div></div>  
+    </div>  
+    <div class="skill">  
+        <div class="skill-name">CSS</div>  
+        <div class="progress-bar"><div class="progress-bar-fill" data-percent="80">0%</div></div>  
+    </div>  
+    <div class="skill">  
+        <div class="skill-name">JavaScript</div>  
+        <div class="progress-bar"><div class="progress-bar-fill" data-percent="70">0%</div></div>  
+    </div>  
+    <div class="skill">  
+        <div class="skill-name">Reverse Engineering</div>  
+        <div class="progress-bar"><div class="progress-bar-fill" data-percent="85">0%</div></div>  
+    </div>  
+</section>  
+  
+<!-- EXPERIENCE -->  
+<section id="experience">  
+    <h1 style="font-size: 48px; color: #ff6b6b; margin-bottom: 40px;">My Experience</h1>  
+    <div class="experience-item">  
+        <h3>Software Developer - XYZ Corp</h3>  
+        <p><strong>2022 - Present</strong></p>  
+        <p>Developed and maintained web applications using JavaScript, React, and Node.js. Led the development of a client-facing tool that increased productivity by 30%.</p>  
+    </div>  
+    <div class="experience-item">  
+        <h3>Junior Developer - ABC Ltd.</h3>  
+        <p><strong>2020 - 2022</strong></p>  
+        <p>Worked on a variety of projects using HTML, CSS, and JavaScript. Collaborated with senior developers to implement new features and improve existing codebases.</p>  
+    </div>  
+    <div class="experience-item">  
+        <h3>Intern - Tech Innovations</h3>  
+        <p><strong>2019 - 2020</strong></p>  
+        <p>Assisted in testing and debugging software, contributed to website development projects, and gained hands-on experience in the software development lifecycle.</p>  
+    </div>  
+</section>  
+  
+<script>  
+    // particles.js configuration  
+    particlesJS('particle-canvas', {  
+        particles: {  
+            number: {  
+                value: 80,  
+                density: {  
+                    enable: true,  
+                    value_area: 800  
+                }  
+            },  
+            color: {  
+                value: "#ff6b6b"  
+            },  
+            shape: {  
+                type: "circle",  
+                stroke: {  
+                    width: 0,  
+                    color: "#000"  
+                }  
+            },  
+            opacity: {  
+                value: 0.5,  
+                random: true,  
+                anim: {  
+                    enable: true,  
+                    speed: 1,  
+                    opacity_min: 0.1,  
+                    sync: false  
+                }  
+            },  
+            size: {  
+                value: 3,  
+                random: true,  
+                anim: {  
+                    enable: true,  
+                    speed: 40,  
+                    size_min: 0.1,  
+                    sync: false  
+                }  
+            },  
+            move: {  
+                enable: true,  
+                speed: 3,  
+                direction: "none",  
+                random: true,  
+                straight: false,  
+                out_mode: "out",  
+                bounce: false,  
+                attract: {  
+                    enable: false,  
+                    rotateX: 600,  
+                    rotateY: 1200  
+                }  
+            }  
+        },  
+        interactivity: {  
+            detect_on: "canvas",  
+            events: {  
+                onhover: {  
+                    enable: true,  
+                    mode: "repulse"  
+                },  
+                onclick: {  
+                    enable: true,  
+                    mode: "push"  
+                }  
+            },  
+            modes: {  
+                repulse: {  
+                    distance: 100,  
+                    duration: 0.4  
+                },  
+                push: {  
+                    particles_nb: 4  
+                }  
+            }  
+        },  
+        retina_detect: true  
+    });  
+  
+    const fills = document.querySelectorAll('.progress-bar-fill');  
+  
+    function animateBars() {  
+        fills.forEach(fill => {  
+            const percent = fill.getAttribute('data-percent');  
+            const fillTop = fill.getBoundingClientRect().top;  
+            const windowHeight = window.innerHeight;  
+  
+            if (fillTop < windowHeight) {  
+                fill.style.width = percent + '%';  
+                fill.textContent = percent + '%';  
+            }  
+        });  
+    }  
+  
+    window.addEventListener('scroll', animateBars);  
+    window.addEventListener('load', animateBars);  
+  
+    // Typing effect  
+    const typingElement = document.querySelector('.typing');  
+    const text = 'Full Stack Developer | Reverse Engineering | Cybersecurity Expert';  
+    let index = 0;  
+  
+    function type() {  
+        if (index < text.length) {  
+            typingElement.innerHTML += text.charAt(index);  
+            index++;  
+            setTimeout(type, 100);  
+        }  
+    }  
+  
+    window.onload = type;  
+</script>  
+  
+</body>  
+</html>
